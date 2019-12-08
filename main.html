@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="hangman.css" type="text/css" rel="stylesheet"></link>
+        <title>Hangman!</title>
+    </head>
+    <body style="text-align: center; background-color: darkred;">
+    <div>
+        <h1 style="font-size: 5vw;">Hangman!</h1>
+            <!-- <pre> -->
+            <code style="text-align: center;color: white; font-size: 5vw;">
+                ╔═══╤╤═══╗<br>
+                ║&nbsp;&nbsp;&nbsp;()&nbsp;&nbsp;&nbsp;║<br>
+                ║&nbsp;&nbsp;/||\&nbsp;&nbsp;║<br>
+                ║&nbsp;&nbsp;_/\_&nbsp;&nbsp;║<br>
+                ║&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;║<br>
+                ╚════════╝<br>
+            </code>
+            <!-- </pre> -->
+        <input class="guess" type="text" name="letter" id="letter" maxlength="1" placeholder="Guess a letter"></input><button class="guess" value="guess?" onclick="userGuessLetter()">Guess</button>
+        <br>
+        <input class="guess" type="text" name="word" id="word" placeholder="Guess the word"></input><button class="guess" value="guess?" onclick="userGuessWord()">Guess</button>
+        <br>
+        <button type="button" onclick="userRestart()" value="restart">Restart</button><button type="button" onclick="userGiveUp()" value="giveUp">Give up</button>
+    </div>
+    </body>
+</html>
+
+<script src="main.js"></script>

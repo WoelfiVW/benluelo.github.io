@@ -1,0 +1,40 @@
+html, body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkgoldenrod;
+}
+
+button, input {
+    background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
+    /* border-radius: 5px; */
+    border-color: #DBA514 /* , #C69320, #DBA514, #EEB609, #FCC201 */;
+    border-style: outset;
+    color: black;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+input {
+    size: 5vw;
+    /* height: 10vw; */
+}
+
+.guess {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+input:hover, button:hover {
+    background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
+}
+
+/* input {
+    background-color: darkgoldenrod;
+    border-radius: 10px;
+    border-color: black;
+    color: black;
+} */
+
+input::placeholder {
+    color: rgb(110, 81, 0);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "hangmanwebsite",
+  "version": "1.0.0",
+  "description": "hangman",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benluelo/hangman.git"
+  },
+  "author": "Ben Luelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benluelo/hangman/issues"
+  },
+  "homepage": "https://github.com/benluelo/hangman#readme",
+  "dependencies": {
+    "chalk": "^3.0.0"
+  }
+}
