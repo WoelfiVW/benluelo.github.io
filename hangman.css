@@ -6,7 +6,7 @@ html, body {
 button, input {
     background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
     /* border-radius: 5px; */
-    border-color: #DBA514 /* , #C69320, #DBA514, #EEB609, #FCC201 */;
+    border-color: #dba514;
     border-style: outset;
     color: black;
     margin-top: 5px;
@@ -26,6 +26,16 @@ input {
 
 input:hover, button:hover {
     background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
+}
+
+input:focus, button:focus {
+    background-image: linear-gradient(to top, rgb(230, 178, 66), rgb(241, 191, 72), rgb(248, 195, 51), rgb(255, 203, 45), rgb(251, 201, 36));
+    outline: none;
+    border-color: rgb(251, 194, 38);
+}
+
+.init {
+    display: none;
 }
 
 /* input {
