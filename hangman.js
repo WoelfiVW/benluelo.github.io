@@ -1,51 +1,23 @@
-// import * as hm from "./hangman"
+// import os
+// import colors
+// import sys
 
-// #region user input
-function userGuessLetter() {
-    let userInput = document.getElementById("letterGuess").value
-    console.log("letter:", userInput)
-    console.log((userInput.length === 1) && isalpha(userInput))
+// var readlineSync = require('readline-sync');
+ 
+// // Wait for user's response.
+// var userName = readlineSync.question('May I have your name? ');
+// console.log('Hi ' + userName + '!');
 
-    if((userInput.length === 1) && isalpha(userInput)){
-        // do stuff
-    }else{
-        let x = document.getElementById("userNotify")
-        x.innerHTML = "Invalid input!"
+const readline = require('readline')
 
-        x.classList.add("shaker")
-        x.addEventListener("animationend", () => x.classList.remove("shaker"))
-    }
-}
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
-function userGuessWord() {
-    let userInput = document.getElementById("wordGuess").value
-    console.log("word:", userInput)
-}
+var while1 = true
+var while2 = true
 
-function userRestart() {
-    console.log("restarting")
-    document.getElementById("start").style.display = "inline"
-}
-
-function userGiveUp() {
-    console.log("user gave up")
-}
-
-function userStart() {
-    document.getElementById("start").style.display = "none"
-
-    let x = document.getElementsByClassName("init")
-    for (var i = 0; i < x.length; i += 1){
-        console.log(i, x[i])
-        x[i].style.display = "block"
-    }
-
-    const word = new Word("lawnmower")
-    console.log(word)
-}
-// #endregion user iput
-
-// #region functions
 function isalnum(str){
     let AN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     for(char in str){
@@ -75,9 +47,8 @@ function isnum(str){
     }
     return true
 }
-// #endregion functions
 
-// #region classes
+
 class Hangman {
     constructor() {
         this.deathCounter = 0
@@ -114,6 +85,7 @@ class Hangman {
 
 }
 
+
 class Letter{
     constructor(l){
         this.guessed = false
@@ -127,43 +99,35 @@ class Letter{
 
 class Word{
     constructor(w){
-
+        // debug
+        console.log(`Word created with value ${w}`)
         // define alphabet
         this._alphabet = {}
-        for(let alpha in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){
+        for(alpha in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){
             this._alphabet[alpha] = false
         }
-        // debug
-        // console.log("alphabet:", this._alphabet)
+        console.log(this._alphabet)
 
         // define letters
         let lst = []
-        for(let ltr in w){
-            // debug
-            // console.log(ltr, w[ltr])
+        for(ltr in range(len(w))){
             ltr = new Letter(w[ltr])
             lst.push(ltr)
         }
         this._letters = lst
-
-        // debug
-        // console.log(`Word created with value ${w}`)
-
-        console.log(this.full())
     }
 
-    // probably not gonna use this
-    // word_colored(){
-    //     s = ""
-    //     for(i in this._letters){
-    //         s += (i.guessed? "\x1b[32m": "\x1b[31m") + str(i.char) + " \x1b[0m"
-    //     }
-    //     return s
-    // }
+    word_colored(){
+        s = ""
+        for(i in this._letters){
+            s += (i.guessed? "\x1b[32m": "\x1b[31m") + str(i.char) + " \x1b[0m"
+        }
+        return s
+    }
 
     string(){
-        let s = ""
-        for(let i in this._letters){
+        var s = ""
+        for(i in this._letters){
             // this is debug
             // console.log(i, i.guessed, i.char)
             s += (i.guessed? (i.char) + " ": "_ ")
@@ -172,16 +136,16 @@ class Word{
     }
 
     full(){
-        let s = ""
-        for (let i in this._letters){
-            s += (this._letters[i].char)
+        s = ""
+        for (i in this._letters){
+            s += (str(i.char))
         }
         return s
     }
 
     _letter_in_word(ltr){
-        for (let i in this._letters){
-            if (this._letters[i].char === ltr){
+        for (i in this._letters){
+            if (i.char == ltr){
                 return true
             }
         }
@@ -189,10 +153,10 @@ class Word{
     }
 
     _check_letters(g, hungman){
-        let _correct_guess = false
-        for(let i in this._letters){
-            if(this._letters[i].char === g){
-                this._letters[i].letter_found()
+        _correct_guess = false
+        for(i in this._letters){
+            if(i.char == g){
+                i.letter_found()
                 _correct_guess = true
             }
         }
@@ -212,7 +176,7 @@ class Word{
     }
 
     guess_letter(g, hungman){
-        if(this._alphabet[g] === false){
+        if(this._alphabet[g] == false){
             this._alphabet[g] = true
         }else{
             // gotta fix this
@@ -223,8 +187,8 @@ class Word{
     }
 
     guessed(){
-        for(let i in this._letters){
-            if(this._letters[i].guessed === false){
+        for(i in this._letters){
+            if(i.guessed == false){
                 return false
             }
         }
@@ -249,4 +213,84 @@ class Word{
         }
     }
 }
-// #endregion classes
+
+// clear screen
+// console.clear()tes
+
+while(while1){
+    
+    // get word
+    var word = new Word(value.toUpperCase().trim())
+
+    // build hangman
+    var hangman = new Hangman()
+
+    // // clear screen
+    // console.clear()
+
+    while(while2){
+
+        // clear screen
+        console.clear()
+
+        // draw game
+        console.log(word)
+        console.log(hangman.build_gallows())
+        console.log(word.guessed_letters())
+
+        // take guess input
+        guess = ""
+        while(guess.length != 1){
+            guess = str(input("Enter a letter, or {1} for more options: ")).toUpperCase().trim()
+            if(isalnum(guess)){
+                if(isalpha(guess)){
+                    if(guess.length != 1){
+                        console.log("Guesses must be one letter!")
+                    }
+                    else{
+                        word.guess_letter(guess, hangman)
+                    }
+                }else
+                    if(guess == "1"){
+                        sys.stdout.write("\x1b[2K\x1b[F\x1b[2K")
+                        wordGuess = str(input("Enter the word: ")).toUpperCase().trim()
+                        if(word.guess_word(wordGuess)){
+                            break
+                        }else{
+                            hangman.hang()
+                            inp = input("Incorrect! Enter anything to continue.")
+                        }
+                    }
+        }
+
+        if(hangman.ishung()){
+            inp = input(`You lose! The word was ${word.full()}. Press {Enter} to play again, or enter any character to quit.`)
+            console.clear()
+            while2 = (len(inp) == 0)? true: false
+            while1 = (len(inp) == 0)? true: false
+            delete word
+            delete hangman
+            delete inp
+            break
+        }elif(word.guessed())
+            inp = input(`You win! The word was ${word.full()}. Press {Enter} to play again, or enter any character to quit.`)
+            console.clear()
+            while2 = (len(inp) == 0)? true: false
+            while1 = (len(inp) == 0)? true: false
+            delete word
+            delete hangman
+            delete inp
+            break
+        }
+    }
+}
+
+module.exports = {
+    Word,
+    Letter,
+    Hangman,
+    isnum,
+    isalpha,
+    isalnum,
+    
+}

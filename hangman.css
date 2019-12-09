@@ -4,14 +4,21 @@ html, body {
 }
 
 button, input {
-    background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
+    background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
     /* border-radius: 5px; */
     border-color: #dba514;
     border-style: outset;
-    color: black;
+
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
+
+    outline: none;
+    
+    color: rgb(105, 77, 0);
+    text-shadow:
+        0 0.05em 0 rgba(255,255,255, 0.10),
+        0 -0.05em 0 rgba(0, 0, 0, 0.75);
 }
 
 input {
@@ -25,13 +32,15 @@ input {
 }
 
 input:hover, button:hover {
-    background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
+    background-image: linear-gradient(to top, (#B78628, #C69320, #DBA514, #EEB609, #FCC201));
+    background-color: hsla(61, 91%, 61%, 1);
+    background-blend-mode: multiply;
 }
 
-input:focus, button:focus {
-    background-image: linear-gradient(to top, rgb(230, 178, 66), rgb(241, 191, 72), rgb(248, 195, 51), rgb(255, 203, 45), rgb(251, 201, 36));
+input:focus, button:active {
+    background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
     outline: none;
-    border-color: rgb(251, 194, 38);
+    /* border-color: rgb(251, 194, 38); */
 }
 
 .init {
@@ -47,4 +56,30 @@ input:focus, button:focus {
 
 input::placeholder {
     color: rgb(110, 81, 0);
+    text-shadow:
+        0 0.05em 0 rgba(255,255,255, 0.10),
+        0 -0.05em 0 rgba(0, 0, 0, 0.75);
+}
+
+.shaker {
+    animation-delay: 0ms;
+    animation-duration: 1s;
+    animation-iteration-count: 500ms;
+    animation-name: shake;
+    position: relative;
+
+}
+
+@keyframes shake {
+    0%   {left: 10px}
+    10%  {left: -10px}
+    20%  {left: 9px}
+    30%  {left: -8px}
+    40%  {left: 7px}
+    50%  {left: -6px}
+    60%  {left: 5px}
+    70%  {left: -4px}
+    80%  {left: 3px}
+    90%  {left: -2px}
+    100% {left: 1px}
 }
