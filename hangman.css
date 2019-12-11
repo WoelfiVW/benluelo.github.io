@@ -1,45 +1,67 @@
 html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: darkgoldenrod;
+    
+    font-size: 3vw;
+    text-align: center;
 }
 
 button, input {
     background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
     /* border-radius: 5px; */
-    border-color: #dba514;
-    border-style: outset;
+    /* border-color: rgb(228, 172, 19); */
+    /* border-style: outset;
+    border-width: 0.4vw;
+    border: none; */
 
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
+    border: outset 0.4vw rgb(228, 172, 19);
+    
+    /*
+    box-shadow: {
+        0 0.5em 0 #DBA5140
+    }; */
+
+    font-size: 3vw;
+    color: rgb(110, 81, 0);
+
+
+    box-shadow: 0 0.4vw 0 0 rgb(124, 86, 16);
+
+    
+    margin: 0.8vw;
+    padding-top: 0.075em;
+    padding-bottom: 0.075em;
 
     outline: none;
     
-    color: rgb(105, 77, 0);
+    /* color: rgb(105, 77, 0); */
     text-shadow:
         0 0.05em 0 rgba(255,255,255, 0.10),
         0 -0.05em 0 rgba(0, 0, 0, 0.75);
+
 }
 
-input {
-    size: 5vw;
-    /* height: 10vw; */
+button {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 .guess {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-input:hover, button:hover {
+/* input:hover, button:hover {
     background-image: linear-gradient(to top, (#B78628, #C69320, #DBA514, #EEB609, #FCC201));
-    background-color: hsla(61, 91%, 61%, 1);
-    background-blend-mode: multiply;
-}
+    background-color: hsla(73, 60, 54, 0.609);
+    background-blend-mode: luminosity;
+} */
 
 input:focus, button:active {
     background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
-    outline: none;
+    border-style: inset;
+    box-shadow: 0 0.3vw 0 0 rgb(100, 69, 11);
+    transform: translateY(0.1vw);
     /* border-color: rgb(251, 194, 38); */
 }
 

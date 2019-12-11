@@ -5,12 +5,12 @@
         <title>Hangman!</title>
     </head>
     <body style="text-align: center; background-color: darkred;">
-        <h1 style="font-size: 5vw;">
+        <h1>
             Hangman!
         </h1>
         <div class="init" >
                 <!-- <pre> -->
-                <code style="text-align: center; font-size: 2vw;">
+                <code style="font-size: 1vw;">
                     ╔═══╤╤═══╗<br>
                     ║&nbsp;&nbsp;&nbsp;()&nbsp;&nbsp;&nbsp;║<br>
                     ║&nbsp;&nbsp;/||\&nbsp;&nbsp;║<br>
@@ -25,12 +25,12 @@
                 <br>
         </div>
         <div class="init" >
-            <input class="tint" type="text" id="letterGuess" maxlength="1" placeholder="Enter a letter..."></input><button class="guess" value="guess?" onclick="userGuessLetter()">Guess</button>
+            <input type="text" id="letterGuess" maxlength="1" placeholder="Enter a letter..."></input><button class="guess" onclick="userGuessLetter()">Guess</button>
             <br>
-            <input class="tint" type="text" id="wordGuess" placeholder="Enter a word..."></input><button class="guess" value="guess?" onclick="userGuessWord()">Guess</button>
+            <input type="text" id="wordGuess" placeholder="Enter a word..."></input><button class="guess" onclick="userGuessWord()">Guess</button>
             <br>
-            <button class="tint" type="button" onclick="userRestart()">Restart</button>
-            <button class="tint" type="button" onclick="userGiveUp()">Give up</button>
+            <button type="button" onclick="userRestart()">Restart</button>
+            <button type="button" onclick="userGiveUp()">Give up</button>
         </div>
         <button class="tint" id="start" type="button" onclick="userStart()">Start</button>
 
