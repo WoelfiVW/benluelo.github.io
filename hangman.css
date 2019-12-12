@@ -36,7 +36,9 @@ table {
 }
 
 #guessedLetters {
-    text-align: left;
+    text-justify: inter-character;
+    text-align: justify;
+    text-align-last: justify;
     vertical-align: top;
 }
 
