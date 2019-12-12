@@ -112,3 +112,7 @@ input::placeholder {
     90%  {left: -2px}
     100% {left: 1px}
 }
+
+span {
+    visibility: hidden;
+}

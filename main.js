@@ -7,7 +7,8 @@ function userGuessLetter() {
     console.log((userInput.length === 1) && isalpha(userInput))
 
     if((userInput.length === 1) && isalpha(userInput)){
-        // do stuff
+        let x = document.getElementById(userInput.toUpperCase())
+        x.style.visibility = "visible"
     }else{
         let x = document.getElementById("userNotify")
         x.innerHTML = "Invalid input!"
@@ -58,8 +59,8 @@ function isalnum(str){
 
 function isalpha(str){
     let A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    for(char in str){
-        if(A.search(char.toUpperCase() == -1)){
+    for(let char in str){
+        if(!A.includes(str[char].toUpperCase())){
             return false
         }
     }
