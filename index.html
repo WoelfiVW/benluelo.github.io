@@ -5,24 +5,28 @@
         <title>Hangman!</title>
     </head>
     <body style="text-align: center; background-color: darkred;">
-        <h1>
-            Hangman!
-        </h1>
+        <h1>Hangman!</h1>
         <div class="init" >
-                <!-- <pre> -->
-                <code style="font-size: 1vw;">
-                    ╔═══╤╤═══╗<br>
-                    ║&nbsp;&nbsp;&nbsp;()&nbsp;&nbsp;&nbsp;║<br>
-                    ║&nbsp;&nbsp;/||\&nbsp;&nbsp;║<br>
-                    ║&nbsp;&nbsp;_/\_&nbsp;&nbsp;║<br>
-                    ║&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;║<br>
-                    ╚════════╝<br>
-                </code>
-                <!-- </pre> -->
+
+            <table>
+                <tr>
+                    <td>
+                        <pre style="font-family: monospace; white-space: pre;">╔═══╤╤═══╗
+║   ()   ║
+║  /||\  ║
+║  _/\_  ║
+║        ║
+╚════════╝</pre>
+                    </td>
+                    <td id="guessedLetters">
+                        a b d h e
+                    </td>
+                </tr>
                 <code id="word">
                     _ _ _ _ _ _ _
                 </code>
                 <br>
+            </table>
         </div>
         <div class="init" >
             <input type="text" id="letterGuess" maxlength="1" placeholder="Enter a letter..."></input><button class="guess" onclick="userGuessLetter()">Guess</button>

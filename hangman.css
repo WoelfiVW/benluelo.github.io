@@ -6,24 +6,13 @@ html, body {
     text-align: center;
 }
 
-button, input {
+button, input, td {
     background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
-    /* border-radius: 5px; */
-    /* border-color: rgb(228, 172, 19); */
-    /* border-style: outset;
-    border-width: 0.4vw;
-    border: none; */
 
     border: outset 0.4vw rgb(228, 172, 19);
-    
-    /*
-    box-shadow: {
-        0 0.5em 0 #DBA5140
-    }; */
 
     font-size: 3vw;
     color: rgb(110, 81, 0);
-
 
     box-shadow: 0 0.4vw 0 0 rgb(124, 86, 16);
 
@@ -39,6 +28,16 @@ button, input {
         0 0.05em 0 rgba(255,255,255, 0.10),
         0 -0.05em 0 rgba(0, 0, 0, 0.75);
 
+}
+
+table {
+    margin: 0 auto 0 auto;
+    border-spacing: 0.8vw;
+}
+
+#guessedLetters {
+    text-align: left;
+    vertical-align: top;
 }
 
 button {
@@ -57,9 +56,15 @@ button {
     background-blend-mode: luminosity;
 } */
 
-input:focus, button:active {
+input:focus {
     background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
     border-style: inset;
+    box-shadow: 0 0.3vw 0 0 rgb(100, 69, 11);
+    transform: translateY(0.1vw);
+    /* border-color: rgb(251, 194, 38); */
+}
+button:active {
+    background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
     box-shadow: 0 0.3vw 0 0 rgb(100, 69, 11);
     transform: translateY(0.1vw);
     /* border-color: rgb(251, 194, 38); */
