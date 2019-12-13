@@ -1,4 +1,5 @@
-// import * as hm from "./hangman"
+// const word = new Word("lawnmower")
+// const hangman = new Hangman()
 
 // #region user input
 function userGuessLetter() {
@@ -9,6 +10,9 @@ function userGuessLetter() {
     if((userInput.length === 1) && isalpha(userInput)){
         let x = document.getElementById(userInput.toUpperCase())
         x.style.visibility = "visible"
+        window.word.guess_letter(userInput, window.hangman)
+        document.getElementById("word").innerHTML = window.word.string()
+        document.getElementById("gallows").innerHTML = window.hangman.build_gallows()
     }else{
         let x = document.getElementById("userNotify")
         x.innerHTML = "Invalid input!"
@@ -37,12 +41,17 @@ function userStart() {
 
     let x = document.getElementsByClassName("init")
     for (var i = 0; i < x.length; i += 1){
-        console.log(i, x[i])
+        // console.log(i, x[i])
         x[i].style.display = "block"
     }
 
-    const word = new Word("lawnmower")
-    console.log(word)
+    window.word = new Word("lawnmower")
+    window.hangman = new Hangman()
+    document.getElementById("gallows").innerHTML = window.hangman.build_gallows()
+
+    // word = new Word("lawnmower")
+    console.log(window.word)
+    document.getElementById("word").innerHTML = window.word.string()
 }
 // #endregion user iput
 
@@ -94,14 +103,12 @@ class Hangman {
     }
 
     build_gallows(){
-        var h = `
-╔═══╤╤═══╗
+        var h = `╔═══${(this.deathCounter > 0) ? '╤╤': '══'}═══╗
 ║   ${(this.deathCounter > 0) ? this._hdict['head']: (' '.repeat((this._hdict['head']).length))}   ║
 ║  ${(this.deathCounter > 2) ? this._hdict['armLeft']: (' '.repeat((this._hdict['armLeft']).length))}${(this.deathCounter > 1) ? this._hdict['body']: (' '.repeat((this._hdict['body']).length))}${(this.deathCounter > 3)? this._hdict['armRight']: (' '.repeat((this._hdict['armRight']).length))}  ║
 ║  ${(this.deathCounter > 5)? this._hdict['foot']: (' '.repeat(this._hdict['foot'].length))}${(this.deathCounter > 4)? this._hdict['legLeft']: (' '.repeat(this._hdict['legLeft'].length))}${(this.deathCounter > 6)? this._hdict['legRight']: (' '.repeat(this._hdict['legRight'].length))}${(this.deathCounter > 7)? this._hdict['foot']: (' '.repeat(this._hdict['foot'].length))}  ║
 ║        ║
 ╚════════╝`
-        
         return h
     }
 
@@ -109,7 +116,7 @@ class Hangman {
         this.deathCounter += 1
     }
 
-    ishung(){
+    is_hung(){
         return this.deathCounter > 8? true: false
     }
 
@@ -130,12 +137,13 @@ class Word{
     constructor(w){
 
         // define alphabet
-        this._alphabet = {}
-        for(let alpha in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){
-            this._alphabet[alpha] = false
+        this._alphabet = new Object()
+        const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        for(let i in ALPHABET){
+            this._alphabet[ALPHABET[i]] = false
         }
         // debug
-        // console.log("alphabet:", this._alphabet)
+        console.log("alphabet:", this._alphabet)
 
         // define letters
         let lst = []
@@ -167,8 +175,9 @@ class Word{
         for(let i in this._letters){
             // this is debug
             // console.log(i, i.guessed, i.char)
-            s += (i.guessed? (i.char) + " ": "_ ")
+            s += (this._letters[i].guessed? (this._letters[i].char) + " ": "_ ")
         }
+        console.log(s)
         return s
     }
 
@@ -213,14 +222,16 @@ class Word{
     }
 
     guess_letter(g, hungman){
-        if(this._alphabet[g] === false){
-            this._alphabet[g] = true
+        const guess = g.toUpperCase()
+        console.log(this._alphabet[guess])
+        if(this._alphabet[guess] === false){
+            this._alphabet[guess] = true
         }else{
             // gotta fix this
             // console.log("Letter has already been guessed!")
             return
         }
-        this._check_letters(g, hungman)
+        this._check_letters(guess, hungman)
     }
 
     guessed(){

@@ -66,9 +66,8 @@ input:focus {
     /* border-color: rgb(251, 194, 38); */
 }
 button:active {
-    background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
-    box-shadow: 0 0.3vw 0 0 rgb(100, 69, 11);
-    transform: translateY(0.1vw);
+    box-shadow: 0 0 0 0 rgb(100, 69, 11);
+    transform: translateY(0.4vw);
     /* border-color: rgb(251, 194, 38); */
 }
 
