@@ -2,22 +2,22 @@ html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: darkgoldenrod;
     
-    font-size: 3vw;
+    font-size: 3vmin;
     text-align: center;
 }
 
 button, input, td {
     background-image: linear-gradient(to top, #B78628, #C69320, #DBA514, #EEB609, #FCC201);
 
-    border: outset 0.4vw rgb(228, 172, 19);
+    border: outset 0.4vmin rgb(228, 172, 19);
 
-    font-size: 3vw;
+    font-size: 5vmin;
     color: rgb(110, 81, 0);
 
-    box-shadow: 0 0.4vw 0 0 rgb(124, 86, 16);
+    box-shadow: 0 0.4vmin 0 0 rgb(124, 86, 16);
 
     
-    margin: 0.8vw;
+    margin: 0.8vmin;
     padding-top: 0.075em;
     padding-bottom: 0.075em;
 
@@ -32,7 +32,7 @@ button, input, td {
 
 table {
     margin: 0 auto 0 auto;
-    border-spacing: 0.8vw;
+    border-spacing: 0.8vmin;
 }
 
 #guessedLetters {
@@ -61,13 +61,13 @@ button {
 input:focus {
     background-image: linear-gradient(#B78628, #C69320, #DBA514, #EEB609, #FCC201);
     border-style: inset;
-    box-shadow: 0 0.3vw 0 0 rgb(100, 69, 11);
-    transform: translateY(0.1vw);
+    box-shadow: 0 0.3vmin 0 0 rgb(100, 69, 11);
+    transform: translateY(0.1vmin);
     /* border-color: rgb(251, 194, 38); */
 }
 button:active {
     box-shadow: 0 0 0 0 rgb(100, 69, 11);
-    transform: translateY(0.4vw);
+    transform: translateY(0.4vmin);
     /* border-color: rgb(251, 194, 38); */
 }
 
