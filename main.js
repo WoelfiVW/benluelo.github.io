@@ -36,7 +36,11 @@ function userGiveUp() {
     console.log("user gave up")
 }
 
-function userStart() {
+async function userStart() {
+
+    const newWordArray = await getWord(1)
+    console.log(newWordArray[0])
+
     document.getElementById("start").style.display = "none"
 
     let x = document.getElementsByClassName("init")
@@ -45,17 +49,59 @@ function userStart() {
         x[i].style.display = "block"
     }
 
-    window.word = new Word("lawnmower")
     window.hangman = new Hangman()
     document.getElementById("gallows").innerHTML = window.hangman.build_gallows()
 
     // word = new Word("lawnmower")
+
+    window.word = new Word(newWordArray[0])
     console.log(window.word)
     document.getElementById("word").innerHTML = window.word.string()
 }
 // #endregion user iput
 
 // #region functions
+
+async function getWord(amount){
+
+    const URL = `https://random-word-api.herokuapp.com/word?key=9PT5GM7K&number=${amount}`
+    
+    return await getwordHTTP(URL)
+    // .then(prms => {
+    //     console.log("getwordHTTP promise:", prms)
+    // })
+
+}
+
+async function getwordHTTP(URL) {
+    u = URL
+    console.log(u)
+    try{
+        let tempWord = await fetch(u)
+        let tempWordJSON = await tempWord.json()
+        console.log(tempWordJSON)
+        if(tempWordJSON[0].length > 4){
+            return tempWordJSON
+        }else{
+            return await getwordHTTP(u)
+        }
+    }catch(error){
+        console.log(error)
+    }
+    // fetch(u).then(async function(res){
+    //     if(res.status === 200){
+    //         res.json().then(async function(data){
+    //             console.log("fetch data:", data)
+    //             if(data[0].length > 4){
+    //                 return data
+    //             }else{
+    //                 return await getwordHTTP(u)
+    //             }
+    //         })
+    //     }
+    // })
+}
+
 function isalnum(str){
     let AN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     for(char in str){
@@ -149,9 +195,8 @@ class Word{
         let lst = []
         for(let ltr in w){
             // debug
-            // console.log(ltr, w[ltr])
-            ltr = new Letter(w[ltr])
-            lst.push(ltr)
+            console.log(ltr, w[ltr])
+            lst.push(new Letter(w[ltr]))
         }
         this._letters = lst
 
